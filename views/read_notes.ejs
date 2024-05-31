@@ -1,22 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Notes</title>
+    <title>Read Notes</title>
     <link rel="stylesheet" href="/public/style.css">
 </head>
 <body>
 <div class="container">
-    <h1>Notes</h1>
+    <h1>Bonjour, <%= user.firstname %></h1> <!-- Display the user's firstname -->
 
-    <form action="/notes/create" method="post">
-        <label for="title">Title:</label><br>
-        <input type="text" id="title" name="title"><br>
-        <label for="content">Content:</label><br>
-        <textarea id="content" name="content"></textarea><br>
-        <input type="submit" value="Create Note">
-    </form>
-
-    <h2>Your Notes</h2>
     <% notes.forEach(note => { %>
         <div class="note">
             <h3><%= note.title %></h3>
@@ -26,6 +17,10 @@
             </form>
         </div>
     <% }); %>
+
+    <a href="/notes/create">Create Note</a>
+
+    <a href="/logout">Logout</a>
 </div>
 </body>
 </html>

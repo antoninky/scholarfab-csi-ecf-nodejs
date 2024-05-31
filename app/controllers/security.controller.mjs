@@ -2,7 +2,6 @@ import { compare } from 'bcrypt'
 
 import { fetchUserByEmail } from '../services/user.service.mjs'
 
-// security.controller.mjs
 async function handleLogin(req, res) {
     const { app, method } = req
     const db = app.get('g:db')

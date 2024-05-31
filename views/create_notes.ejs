@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Note</title>
+    <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Create Note</h1>
+
+    <form action="/notes/create" method="post">
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title"><br>
+        <label for="content">Content:</label><br>
+        <textarea id="content" name="content"></textarea><br>
+        <input type="submit" value="Create Note">
+    </form>
+
+    <a href="/notes/read">View Notes</a>
+
+    <a href="/logout">Logout</a>
+</div>
+</body>
+</html>

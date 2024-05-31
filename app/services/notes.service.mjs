@@ -1,5 +1,3 @@
-
-// notes.service.mjs
 import { nanoid } from 'nanoid';
 import sqlite3 from 'sqlite3';
 
@@ -14,7 +12,6 @@ export class NoteService {
         const { app, method } = req
         const owner_id = req.session.user.id;
         const db = app.get('g:db')
-        // Insérer la note dans la base de données
         const { title, content } = req.body;
         const sql = `INSERT INTO notes (title, content, owner_id) VALUES (?, ?, ?)`;
         return new Promise((resolve, reject) => {
@@ -30,7 +27,6 @@ export class NoteService {
         const { app, method } = req
         const db = app.get('g:db')
         const owner_id = req.session.user.id;
-        // Récupérer les notes de la base de données pour un utilisateur spécifique
         const sql = `SELECT * FROM notes WHERE owner_id = ?`;
         return new Promise((resolve, reject) => {
             db.all(sql, [owner_id], (err, rows) => {
@@ -46,7 +42,6 @@ export class NoteService {
     deleteNote(noteId,req, res) {
         const { app, method } = req
         const db = app.get('g:db')
-        // Supprimer la note de la base de données
         const sql = `DELETE FROM notes WHERE id = ?`;
         return new Promise((resolve, reject) => {
             db.run(sql, [noteId], (err) => {
