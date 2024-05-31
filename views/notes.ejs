@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notes</title>
+    <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Notes</h1>
+
+    <form action="/notes/create" method="post">
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title"><br>
+        <label for="content">Content:</label><br>
+        <textarea id="content" name="content"></textarea><br>
+        <input type="submit" value="Create Note">
+    </form>
+
+    <h2>Your Notes</h2>
+    <% notes.forEach(note => { %>
+        <div class="note">
+            <h3><%= note.title %></h3>
+            <p><%= note.content %></p>
+            <form action="/notes/delete/<%= note.id %>" method="post">
+                <input type="submit" value="Delete Note">
+            </form>
+        </div>
+    <% }); %>
+</div>
+</body>
+</html>

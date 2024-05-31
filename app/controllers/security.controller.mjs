@@ -2,11 +2,12 @@ import { compare } from 'bcrypt'
 
 import { fetchUserByEmail } from '../services/user.service.mjs'
 
+// security.controller.mjs
 async function handleLogin(req, res) {
     const { app, method } = req
     const db = app.get('g:db')
 
-    if(req.session.user) { return res.redirect('/') }
+    if(req.session.user) { return res.redirect('/notes/read') }
     if(method == 'GET') { return res.render('login') }
 
     const { email, password } = req.body
@@ -17,7 +18,7 @@ async function handleLogin(req, res) {
         const ok = await compare(password, user.password)
         if(ok) {
             req.session.user = user
-            return res.redirect('/')
+            return res.redirect('/notes/read')
         }
     }
 
